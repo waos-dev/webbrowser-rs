@@ -45,7 +45,11 @@
 )]
 #[cfg_attr(target_os = "macos", path = "macos.rs")]
 #[cfg_attr(target_os = "android", path = "android.rs")]
-#[cfg_attr(target_family = "wasm", path = "wasm.rs")]
+#[cfg_attr(target_os = "wasi", path = "waos.rs")]
+#[cfg_attr(
+    all(target_family = "wasm", not(target_os = "wasi")),
+    path = "wasm.rs"
+)]
 #[cfg_attr(windows, path = "windows.rs")]
 #[cfg_attr(
     all(
@@ -352,7 +356,7 @@ impl TargetType {
         target_os = "ios",
         target_os = "tvos",
         target_os = "visionos",
-        target_family = "wasm"
+        all(target_family = "wasm", not(target_os = "wasi"))
     ))]
     fn is_http(&self) -> bool {
         matches!(self.0.scheme(), "http" | "https")
@@ -365,7 +369,7 @@ impl TargetType {
         target_os = "ios",
         target_os = "tvos",
         target_os = "visionos",
-        target_family = "wasm"
+        all(target_family = "wasm", not(target_os = "wasi"))
     ))]
     fn get_http_url(&self) -> Result<&str> {
         if self.is_http() {

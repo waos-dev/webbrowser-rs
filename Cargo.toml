@@ -15,9 +15,12 @@ rust-version = "1.85"
 log = { version = "0.4", default-features = false }
 url = { version = "2", default-features = false, features = ["std"] }
 
-[target.'cfg(target_family = "wasm")'.dependencies.web-sys]
+[target.'cfg(all(target_family = "wasm", not(target_os = "wasi")))'.dependencies.web-sys]
 version = "0.3"
 features = ['Window']
+
+[target.'cfg(target_os = "wasi")'.dependencies]
+wasdk = "0.7.1"
 
 [features]
 hardened = []
