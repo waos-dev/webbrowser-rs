@@ -9,7 +9,7 @@ This fork adds WaOS to webbrowser 1.2.7: on a WaOS app (a WASI component, `targe
 webbrowser = { git = "https://github.com/waos-dev/webbrowser-rs", branch = "waos" }
 ```
 
-The fork asks for the published `wasdk` (0.7.1). An app that takes `wasdk` from WaOS's repository names it in the same `[patch.crates-io]`, so the fork builds with that one too.
+The fork asks for the published `wasdk` (0.8.0). An app that takes `wasdk` from WaOS's repository names it in the same `[patch.crates-io]`, so the fork builds with that one too.
 
 ## What it does
 

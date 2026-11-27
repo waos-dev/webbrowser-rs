@@ -20,7 +20,7 @@ version = "0.3"
 features = ['Window']
 
 [target.'cfg(target_os = "wasi")'.dependencies]
-wasdk = "0.7.1"
+wasdk = "0.8.0"
 
 [features]
 hardened = []
